@@ -1,5 +1,5 @@
 const localServer = 'http://localhost:8000';
-const remoteServer = 'https://apnacollegebackend.onrender.com';
+const remoteServer = 'https://meetverse-backend.onrender.com';
 
 const isLocalHost = typeof window !== 'undefined' && [
     'localhost',
