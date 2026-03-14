@@ -457,11 +457,27 @@
 .lightShell .fieldGroup select {
     background: rgba(255, 255, 255, 0.95);
     color: #0f172a;
-    border-color: rgba(15, 23, 42, 0.16);
+    border-color: rgba(15, 23, 42, 0.22);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.lightShell .fieldGroup input::placeholder {
+    color: #64748b;
+}
+
+.lightShell .previewPanel {
+    background: linear-gradient(180deg, #dde3ed, #c8d1e0);
+    border-color: rgba(15, 23, 42, 0.14);
+}
+
+.lightShell .previewNameBadge {
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(15, 23, 42, 0.18);
+    color: #0f172a;
 }
 
 .lightShell .previewFallback {
-    background: linear-gradient(180deg, rgba(226, 232, 240, 0.55), rgba(226, 232, 240, 0.9));
+    background: linear-gradient(180deg, rgba(209, 218, 230, 0.6), rgba(196, 208, 224, 0.92));
 }
 
 .lightShell .previewFallback h3,
@@ -470,8 +486,8 @@
 }
 
 .lightShell .previewFallbackIcon {
-    background: rgba(15, 23, 42, 0.1);
-    color: #1e293b;
+    background: rgba(255, 255, 255, 0.75);
+    color: #334155;
 }
 
 .lightShell .themeToggle {

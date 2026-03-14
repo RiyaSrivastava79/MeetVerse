@@ -120,14 +120,14 @@ export default function Authentication() {
                         <button
                             type='button'
                             className={formState === 0 ? styles.activeTab : styles.tabButton}
-                            onClick={() => setFormState(0)}
+                            onClick={() => { setFormState(0); setUsername(''); setPassword(''); setName(''); setError(''); }}
                         >
                             Sign In
                         </button>
                         <button
                             type='button'
                             className={formState === 1 ? styles.activeTab : styles.tabButton}
-                            onClick={() => setFormState(1)}
+                            onClick={() => { setFormState(1); setUsername(''); setPassword(''); setName(''); setError(''); }}
                         >
                             Sign Up
                         </button>
@@ -149,7 +149,9 @@ export default function Authentication() {
                                     value={name}
                                     onChange={(event) => setName(event.target.value)}
                                     placeholder='Enter your full name'
-                                    autoComplete='name'
+                                    autoComplete='new-password'
+                                    readOnly
+                                    onFocus={(e) => e.target.removeAttribute('readOnly')}
                                 />
                             </label>
                         ) : null}
@@ -158,14 +160,15 @@ export default function Authentication() {
                             <span>Username</span>
                             <input
                                 type='text'
-                                name={formState === 1 ? 'signup-username' : 'signin-username'}
                                 value={username}
                                 onChange={(event) => setUsername(event.target.value)}
                                 onBlur={() => setUsername((current) => normalizeUsername(current))}
                                 placeholder='Enter username'
-                                autoComplete='off'
+                                autoComplete='new-password'
                                 autoCapitalize='none'
                                 spellCheck='false'
+                                readOnly
+                                onFocus={(e) => e.target.removeAttribute('readOnly')}
                             />
                         </label>
 
@@ -173,11 +176,12 @@ export default function Authentication() {
                             <span>Password</span>
                             <input
                                 type='password'
-                                name={formState === 1 ? 'signup-password' : 'signin-password'}
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                                 placeholder='Enter password'
                                 autoComplete='new-password'
+                                readOnly
+                                onFocus={(e) => e.target.removeAttribute('readOnly')}
                             />
                         </label>
 
