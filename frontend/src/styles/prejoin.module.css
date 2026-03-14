@@ -1,0 +1,500 @@
+.preJoinShell {
+    min-height: 100vh;
+    padding: 32px 20px;
+    background:
+        radial-gradient(circle at top left, rgba(255, 152, 57, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.2), transparent 26%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    color: #f8fafc;
+}
+
+.preJoinInner {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    display: grid;
+    gap: 24px;
+}
+
+.permissionPopup {
+    width: min(440px, 90vw);
+    padding: 32px 28px;
+    border-radius: 28px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(15, 23, 42, 0.96);
+    box-shadow: 0 40px 80px rgba(2, 6, 23, 0.6);
+    text-align: center;
+}
+
+.permissionPopup h2 { margin: 14px 0 0; font-size: 1.2rem; }
+.permissionPopup p { margin: 10px 0 0; color: #94a3b8; font-size: 0.9rem; }
+
+.permissionActions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.allowButton,
+.skipButton {
+    border: 0;
+    border-radius: 14px;
+    padding: 12px 14px;
+    cursor: pointer;
+    color: #f8fafc;
+    transition: transform 180ms ease;
+}
+
+.allowButton {
+    background: linear-gradient(135deg, #ff9839, #d97500);
+}
+
+.skipButton {
+    background: rgba(30, 41, 59, 0.84);
+}
+
+.allowButton:hover,
+.skipButton:hover {
+    transform: translateY(-2px);
+}
+
+.topMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.topMetaRight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.themeToggle {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(15, 23, 42, 0.72);
+    color: #f8fafc;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform 180ms ease, background 180ms ease;
+    flex-shrink: 0;
+}
+
+.themeToggle:hover {
+    transform: translateY(-2px);
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(2, 6, 23, 0.72);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.popupIconWrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 152, 57, 0.16);
+    color: #ffb25b;
+    margin: 0 auto;
+}
+
+.popupIconWrap svg {
+    font-size: 2rem;
+}
+
+.brandBlock h1,
+.brandBlock p,
+.roomBadge p {
+    margin: 0;
+}
+
+.brandBlock h1 {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1;
+}
+
+.brandBlock p {
+    margin-top: 10px;
+    color: #cbd5e1;
+}
+
+.roomBadge {
+    padding: 14px 18px;
+    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 24px 50px rgba(2, 6, 23, 0.32);
+}
+
+.roomBadge span {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+}
+
+.contentCard {
+    position: relative;
+    padding: 24px;
+    border-radius: 32px;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 26px 70px rgba(2, 6, 23, 0.38);
+}
+
+.contentCard::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
+.previewPanel {
+    position: relative;
+    min-height: min(58vh, 520px);
+    border-radius: 28px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.65), rgba(30, 41, 59, 0.85));
+    border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.previewGlow {
+    position: absolute;
+    inset: auto auto -16% 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 160px;
+    background: rgba(59, 130, 246, 0.18);
+    filter: blur(58px);
+}
+
+.previewVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.previewFallback {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 32px;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.9));
+}
+
+.previewFallback h3,
+.previewFallback p {
+    margin: 0;
+}
+
+.previewFallback p {
+    margin-top: 10px;
+    max-width: 460px;
+    color: #cbd5e1;
+}
+
+.previewFallbackIcon {
+    width: 84px;
+    height: 84px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: rgba(30, 41, 59, 0.85);
+    color: #f8fafc;
+    margin: 0 auto 16px;
+}
+
+.previewFallbackIcon svg {
+    font-size: 2.4rem;
+}
+
+.previewNameBadge {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.controlsPanel {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+}
+
+.devicesHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.devicesHeading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+}
+
+.permissionWarning {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+    padding: 10px 14px;
+    border-radius: 999px;
+}
+
+.inputGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.fieldGroup {
+    display: grid;
+    gap: 8px;
+    color: #cbd5e1;
+}
+
+.fieldGroup input,
+.fieldGroup select {
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(15, 23, 42, 0.92);
+    color: #f8fafc;
+    border-radius: 18px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.fieldGroup input:focus,
+.fieldGroup select:focus {
+    border-color: rgba(255, 152, 57, 0.85);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(255, 152, 57, 0.14);
+}
+
+.controlRow {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.circleControl {
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    border: 0;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.circleControl svg {
+    font-size: 1.8rem;
+}
+
+.circleControl:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.controlActive {
+    background: rgba(30, 41, 59, 0.92);
+    color: #f8fafc;
+    box-shadow: 0 18px 34px rgba(2, 6, 23, 0.3);
+}
+
+.controlMuted {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.92), rgba(220, 38, 38, 0.92));
+    color: #fff7ed;
+    box-shadow: 0 18px 34px rgba(127, 29, 29, 0.28);
+}
+
+.footerBar {
+    display: flex;
+    justify-content: center;
+    margin-top: 26px;
+}
+
+.joinButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 220px;
+    padding: 16px 26px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ff9839, #d97500);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 24px 50px rgba(217, 117, 0, 0.34);
+    transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+}
+
+.joinButton:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 28px 58px rgba(255, 152, 57, 0.38);
+}
+
+.joinButton:disabled {
+    opacity: 0.68;
+    cursor: not-allowed;
+}
+
+.helperText {
+    margin-top: 14px;
+    text-align: center;
+    color: #94a3b8;
+}
+
+@media (max-width: 900px) {
+    .topMeta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .inputGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .preJoinShell {
+        padding-inline: 14px;
+    }
+
+    .contentCard {
+        padding: 18px;
+        border-radius: 24px;
+    }
+
+    .previewPanel {
+        min-height: 380px;
+    }
+
+    .controlRow {
+        gap: 12px;
+    }
+
+    .circleControl {
+        width: 62px;
+        height: 62px;
+    }
+
+    .joinButton {
+        width: 100%;
+    }
+}
+
+/* ── Light mode overrides ──────────────────────────────── */
+.lightShell {
+    background:
+        radial-gradient(circle at top left, rgba(255, 152, 57, 0.1), transparent 30%),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 26%),
+        linear-gradient(180deg, #f0f4ff 0%, #e2e8f0 100%);
+    color: #0f172a;
+}
+
+.lightShell .brandBlock p {
+    color: #475569;
+}
+
+.lightShell .roomBadge {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(15, 23, 42, 0.12);
+}
+
+.lightShell .roomBadge span {
+    color: #64748b;
+}
+
+.lightShell .roomBadge p {
+    color: #0f172a;
+}
+
+.lightShell .contentCard {
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(15, 23, 42, 0.1);
+}
+
+.lightShell .fieldGroup {
+    color: #334155;
+}
+
+.lightShell .fieldGroup input,
+.lightShell .fieldGroup select {
+    background: rgba(255, 255, 255, 0.95);
+    color: #0f172a;
+    border-color: rgba(15, 23, 42, 0.16);
+}
+
+.lightShell .previewFallback {
+    background: linear-gradient(180deg, rgba(226, 232, 240, 0.55), rgba(226, 232, 240, 0.9));
+}
+
+.lightShell .previewFallback h3,
+.lightShell .previewFallback p {
+    color: #1e293b;
+}
+
+.lightShell .previewFallbackIcon {
+    background: rgba(15, 23, 42, 0.1);
+    color: #1e293b;
+}
+
+.lightShell .themeToggle {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(15, 23, 42, 0.14);
+    color: #0f172a;
+}
+
+.lightShell .controlActive {
+    background: rgba(15, 23, 42, 0.14);
+    color: #0f172a;
+}
+
+.lightShell .permissionPopup {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.1);
+    box-shadow: 0 40px 80px rgba(15, 23, 42, 0.2);
+}
+
+.lightShell .permissionPopup h2 {
+    color: #0f172a;
+}
+
+.lightShell .permissionPopup p {
+    color: #64748b;
+}

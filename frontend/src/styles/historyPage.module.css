@@ -1,0 +1,182 @@
+.shell {
+    min-height: 100vh;
+    padding: 32px 24px;
+    background:
+        radial-gradient(circle at top left, rgba(255, 152, 57, 0.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.18), transparent 26%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    color: #f8fafc;
+}
+
+.inner {
+    width: min(860px, 100%);
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 14px;
+    background: rgba(30, 41, 59, 0.84);
+    color: #f8fafc;
+    cursor: pointer;
+    transition: transform 180ms ease;
+    flex-shrink: 0;
+}
+
+.backButton:hover {
+    transform: translateY(-2px);
+}
+
+.headerText h1 {
+    margin: 0;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.headerText p {
+    margin: 4px 0 0;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.kicker {
+    display: inline-block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #ffb25b;
+    font-size: 0.75rem;
+}
+
+.list {
+    display: grid;
+    gap: 14px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 22px;
+    border-radius: 22px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    background: rgba(15, 23, 42, 0.74);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 32px rgba(2, 6, 23, 0.28);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 42px rgba(2, 6, 23, 0.36);
+}
+
+.iconWrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: rgba(255, 152, 57, 0.14);
+    color: #ffb25b;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.iconWrap svg {
+    font-size: 1.6rem;
+}
+
+.cardBody {
+    flex: 1;
+    min-width: 0;
+}
+
+.meetingCode {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.metaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 6px;
+}
+
+.metaItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.82rem;
+    color: #94a3b8;
+}
+
+.metaItem svg {
+    font-size: 1rem;
+    color: #64748b;
+}
+
+.rejoinButton {
+    flex-shrink: 0;
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ff9839, #d97500);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 180ms ease;
+    white-space: nowrap;
+}
+
+.rejoinButton:hover {
+    transform: translateY(-2px);
+}
+
+.empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #64748b;
+}
+
+.empty svg {
+    font-size: 3.5rem;
+    margin-bottom: 14px;
+    color: #334155;
+}
+
+.empty p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: rgba(59, 130, 246, 0.14);
+    color: #93c5fd;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-left: auto;
+    flex-shrink: 0;
+}

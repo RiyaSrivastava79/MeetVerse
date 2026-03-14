@@ -1,0 +1,252 @@
+.homeShell {
+    position: relative;
+    min-height: 100vh;
+    padding: 24px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(255, 152, 57, 0.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.18), transparent 26%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    color: #f8fafc;
+}
+
+.homeBackdrop {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(10px);
+}
+
+.homeHeader,
+.actionCard {
+    position: relative;
+    z-index: 1;
+    border-radius: 30px;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    background: rgba(15, 23, 42, 0.74);
+    box-shadow: 0 26px 70px rgba(2, 6, 23, 0.36);
+    backdrop-filter: blur(18px);
+}
+
+.homeHeader {
+    width: min(1120px, 100%);
+    margin: 0 auto 24px;
+    padding: 28px 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+.kicker {
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #ffb25b;
+    font-size: 0.8rem;
+}
+
+.homeHeader h1 {
+    margin: 0;
+    max-width: 720px;
+    font-size: clamp(1.8rem, 3vw, 3rem);
+}
+
+.headerActions {
+    display: flex;
+    gap: 12px;
+}
+
+.headerButton,
+.primaryButton,
+.secondaryButton,
+.ghostButton {
+    border: 0;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.headerButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: rgba(30, 41, 59, 0.84);
+    color: #f8fafc;
+}
+
+.homeGrid {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.actionCard {
+    padding: 28px;
+}
+
+.meetingLogo {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(2, 6, 23, 0.4);
+    padding: 8px;
+}
+
+.cardIcon {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: rgba(255, 152, 57, 0.14);
+    color: #ffb25b;
+}
+
+.cardIcon svg {
+    font-size: 1.8rem;
+}
+
+.actionCard h2,
+.actionCard p {
+    margin: 0;
+}
+
+.actionCard h2 {
+    margin-top: 18px;
+}
+
+.actionCard p {
+    margin-top: 10px;
+    color: #94a3b8;
+}
+
+.fieldGroup,
+.readonlyField {
+    display: grid;
+    gap: 8px;
+    margin-top: 18px;
+    color: #cbd5e1;
+}
+
+.fieldGroup input,
+.readonlyField input {
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(15, 23, 42, 0.94);
+    color: #f8fafc;
+    border-radius: 18px;
+    padding: 14px 16px;
+    outline: none;
+}
+
+.primaryButton {
+    margin-top: 18px;
+    padding: 15px 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ff9839, #d97500);
+    color: white;
+    box-shadow: 0 20px 40px rgba(217, 117, 0, 0.3);
+}
+
+.secondaryButton,
+.ghostButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: rgba(30, 41, 59, 0.84);
+    color: #f8fafc;
+}
+
+.joinCodeButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ff9839, #d97500);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(217, 117, 0, 0.28);
+}
+
+.joinLinkButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.28);
+}
+
+.generatedBox {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 24px;
+    background: rgba(2, 6, 23, 0.34);
+}
+
+.inlineActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.statusText {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, 100%);
+    margin: 16px auto 0;
+    color: #cbd5e1;
+}
+
+.headerButton:hover,
+.primaryButton:hover,
+.secondaryButton:hover,
+.ghostButton:hover,
+.joinCodeButton:hover,
+.joinLinkButton:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .homeHeader,
+    .homeGrid {
+        width: 100%;
+    }
+
+    .homeHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .homeGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .homeShell {
+        padding: 14px;
+    }
+
+    .homeHeader,
+    .actionCard {
+        padding: 20px;
+    }
+
+    .headerActions,
+    .inlineActions {
+        width: 100%;
+        flex-direction: column;
+    }
+}
