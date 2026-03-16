@@ -6,7 +6,7 @@ import VideocamOffIcon from '@mui/icons-material/VideocamOff';
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import MicIcon from '@mui/icons-material/Mic';
 import MicOffIcon from '@mui/icons-material/MicOff';
-import CameraswitchRoundedIcon from '@mui/icons-material/CameraswitchRounded';
+import FlipCameraAndroidRoundedIcon from '@mui/icons-material/FlipCameraAndroidRounded';
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -67,7 +67,6 @@ export default function VideoMeetComponent() {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
     const [newMessages, setNewMessages] = useState(0);
-    const [username, setUsername] = useState('Participant');
     const [videos, setVideos] = useState([]);
     const [cameraDevices, setCameraDevices] = useState([]);
     const [currentCameraIndex, setCurrentCameraIndex] = useState(0);
@@ -299,7 +298,6 @@ export default function VideoMeetComponent() {
         setAudio(initialAudio);
         setScreenAvailable(Boolean(navigator.mediaDevices.getDisplayMedia));
         const resolvedUsername = resolvedConfig.username || 'Participant';
-        setUsername(resolvedUsername);
         usernameRef.current = resolvedUsername;
 
         const bootstrapMeeting = async () => {
@@ -451,7 +449,7 @@ export default function VideoMeetComponent() {
         }
     };
 
-    const participantCount = videos.length + 1;
+    const participantCount = videos.length;
     const participantsClassName = [
         styles.conferenceView,
         participantCount === 1
@@ -516,16 +514,6 @@ export default function VideoMeetComponent() {
             </div>
 
             <div className={participantsClassName}>
-                <div className={`${styles.conferenceCard} ${styles.localConferenceCard}`}>
-                    <video
-                        ref={localVideoRef}
-                        autoPlay
-                        muted
-                        playsInline
-                    ></video>
-                    <div className={styles.participantLabel}>{username || 'You'} (You)</div>
-                </div>
-
                 {videos.map((remoteVideo) => (
                     <div className={styles.conferenceCard} key={remoteVideo.socketId}>
                         <video
@@ -543,6 +531,8 @@ export default function VideoMeetComponent() {
                 ))}
             </div>
 
+            <video className={styles.meetUserVideo} ref={localVideoRef} autoPlay muted playsInline></video>
+
             <div className={styles.buttonContainers}>
                 <IconButton onClick={handleVideo} className={styles.controlButton}>
                     {video ? <VideocamIcon /> : <VideocamOffIcon />}
@@ -556,7 +546,7 @@ export default function VideoMeetComponent() {
 
                 {cameraDevices.length > 1 ? (
                     <IconButton onClick={handleSwitchCamera} className={styles.controlButton}>
-                        <CameraswitchRoundedIcon />
+                        <FlipCameraAndroidRoundedIcon />
                     </IconButton>
                 ) : null}
 
