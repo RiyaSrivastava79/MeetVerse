@@ -368,6 +368,22 @@ export default function VideoMeetComponent() {
         };
     }, [syncCameraDevices]);
 
+    useEffect(() => {
+        const previousHtmlOverflow = document.documentElement.style.overflow;
+        const previousBodyOverflow = document.body.style.overflow;
+        const previousBodyHeight = document.body.style.height;
+
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        document.body.style.height = '100dvh';
+
+        return () => {
+            document.documentElement.style.overflow = previousHtmlOverflow;
+            document.body.style.overflow = previousBodyOverflow;
+            document.body.style.height = previousBodyHeight;
+        };
+    }, []);
+
     useEffect(() => () => {
         stopTracks(window.localStream);
 

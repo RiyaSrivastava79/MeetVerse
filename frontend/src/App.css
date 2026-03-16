@@ -115,6 +115,155 @@
   object-fit: contain;
 }
 
+.landingGuestSection {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto 40px;
+  padding: 28px;
+  border-radius: 30px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.74);
+  box-shadow: 0 26px 70px rgba(2, 6, 23, 0.36);
+  backdrop-filter: blur(18px);
+}
+
+.landingGuestHeader p,
+.landingGuestHeader h2,
+.landingGuestCard h3,
+.landingGuestCard p,
+.landingStatusText {
+  margin: 0;
+}
+
+.landingGuestHeader p {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #ffb25b;
+  font-size: 0.8rem;
+}
+
+.landingGuestHeader h2 {
+  margin-top: 8px;
+  font-size: clamp(1.6rem, 2.6vw, 2.5rem);
+}
+
+.landingGuestGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.landingGuestCard {
+  padding: 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(2, 6, 23, 0.34);
+}
+
+.landingGuestIcon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(255, 152, 57, 0.14);
+  color: #ffb25b;
+}
+
+.landingGuestIcon svg {
+  font-size: 1.7rem;
+}
+
+.landingGuestCard h3 {
+  margin-top: 18px;
+  font-size: 1.35rem;
+}
+
+.landingGuestCard p {
+  margin-top: 10px;
+  color: rgba(226, 232, 240, 0.76);
+}
+
+.landingFieldGroup {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  color: #cbd5e1;
+}
+
+.landingFieldGroup input {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.94);
+  color: #f8fafc;
+  border-radius: 18px;
+  padding: 14px 16px;
+  outline: none;
+}
+
+.landingGuestPrimaryButton,
+.landingGuestSecondaryButton,
+.landingGuestLinkButton {
+  border: 0;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.landingGuestPrimaryButton {
+  margin-top: 18px;
+  padding: 15px 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ff9839, #d97500);
+  color: #fff;
+  box-shadow: 0 20px 40px rgba(217, 117, 0, 0.3);
+}
+
+.landingGuestSecondaryButton,
+.landingGuestLinkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  color: #fff;
+}
+
+.landingGuestSecondaryButton {
+  background: rgba(30, 41, 59, 0.84);
+}
+
+.landingGuestLinkButton {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.28);
+}
+
+.landingGeneratedBox {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(2, 6, 23, 0.34);
+}
+
+.landingGuestActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.landingStatusText {
+  margin-top: 16px;
+  color: #cbd5e1;
+}
+
+.landingGuestPrimaryButton:hover,
+.landingGuestSecondaryButton:hover,
+.landingGuestLinkButton:hover {
+  transform: translateY(-2px);
+}
+
 .landingLight {
   color: #0f172a;
 }
@@ -127,13 +276,39 @@
 .landingLight nav .navlist div,
 .landingLight h1,
 .landingLight h2,
-.landingLight p {
+.landingLight h3,
+.landingLight p,
+.landingLight span,
+.landingLight label {
   color: #0f172a;
 }
 
 .landingLight .landingThemeToggle {
   background: rgba(255, 255, 255, 0.9);
   border-color: rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+}
+
+.landingLight .landingGuestSection,
+.landingLight .landingGuestCard,
+.landingLight .landingGeneratedBox {
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.landingLight .landingGuestCard p,
+.landingLight .landingStatusText,
+.landingLight .landingFieldGroup {
+  color: #334155;
+}
+
+.landingLight .landingFieldGroup input {
+  background: rgba(248, 250, 252, 0.96);
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.landingLight .landingGuestSecondaryButton {
+  background: rgba(226, 232, 240, 0.95);
   color: #0f172a;
 }
 
@@ -223,6 +398,15 @@
   .rightPanel > img {
     width: min(90vw, 420px);
   }
+
+  .landingGuestSection {
+    width: min(1120px, calc(100% - 32px));
+    padding: 22px;
+  }
+
+  .landingGuestGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -245,6 +429,27 @@
     min-height: calc(100vh - 120px);
     padding-inline: 1rem;
     gap: 1.2rem;
+  }
+
+  .landingGuestSection {
+    width: calc(100% - 24px);
+    padding: 18px;
+    margin-bottom: 24px;
+  }
+
+  .landingGuestCard {
+    padding: 18px;
+  }
+
+  .landingGuestActions {
+    flex-direction: column;
+  }
+
+  .landingGuestPrimaryButton,
+  .landingGuestSecondaryButton,
+  .landingGuestLinkButton {
+    width: 100%;
+    justify-content: center;
   }
 
   .landingMainContainer>div:nth-child(1) {
