@@ -6,6 +6,7 @@ import VideocamOffIcon from '@mui/icons-material/VideocamOff';
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import MicIcon from '@mui/icons-material/Mic';
 import MicOffIcon from '@mui/icons-material/MicOff';
+import CameraswitchRoundedIcon from '@mui/icons-material/CameraswitchRounded';
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -68,7 +69,8 @@ export default function VideoMeetComponent() {
     const [newMessages, setNewMessages] = useState(0);
     const [username, setUsername] = useState('Participant');
     const [videos, setVideos] = useState([]);
-    const [isReady, setIsReady] = useState(false);
+    const [cameraDevices, setCameraDevices] = useState([]);
+    const [currentCameraIndex, setCurrentCameraIndex] = useState(0);
 
     const storageKey = `prejoin:${url}`;
 
@@ -107,6 +109,24 @@ export default function VideoMeetComponent() {
 
         if (localVideoRef.current) {
             localVideoRef.current.srcObject = stream;
+        }
+    }, []);
+
+    const syncCameraDevices = useCallback(async () => {
+        if (!navigator.mediaDevices?.enumerateDevices) {
+            return;
+        }
+
+        try {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            const availableCameras = devices.filter((device) => device.kind === 'videoinput');
+            setCameraDevices(availableCameras);
+
+            const selectedDeviceId = meetingConfigRef.current?.videoDeviceId;
+            const matchingIndex = availableCameras.findIndex((device) => device.deviceId === selectedDeviceId);
+            setCurrentCameraIndex(matchingIndex >= 0 ? matchingIndex : 0);
+        } catch (error) {
+            console.log(error);
         }
     }, []);
 
@@ -308,7 +328,6 @@ export default function VideoMeetComponent() {
             }
 
             connectToSocketServer();
-            setIsReady(true);
 
             if (localStorage.getItem('token') && !historyRecordedRef.current) {
                 historyRecordedRef.current = true;
@@ -336,6 +355,20 @@ export default function VideoMeetComponent() {
                 .catch((error) => console.log(error));
         }
     }, [attachLocalStream, audio, refreshLocalMedia, renegotiateWithPeers, screen, video]);
+
+    useEffect(() => {
+        syncCameraDevices();
+
+        if (!navigator.mediaDevices?.addEventListener) {
+            return undefined;
+        }
+
+        navigator.mediaDevices.addEventListener('devicechange', syncCameraDevices);
+
+        return () => {
+            navigator.mediaDevices.removeEventListener('devicechange', syncCameraDevices);
+        };
+    }, [syncCameraDevices]);
 
     useEffect(() => () => {
         stopTracks(window.localStream);
@@ -371,6 +404,26 @@ export default function VideoMeetComponent() {
         setScreen((current) => !current);
     };
 
+    const handleSwitchCamera = async () => {
+        if (cameraDevices.length < 2) {
+            return;
+        }
+
+        const nextIndex = (currentCameraIndex + 1) % cameraDevices.length;
+        const nextCamera = cameraDevices[nextIndex];
+
+        meetingConfigRef.current = {
+            ...(meetingConfigRef.current || {}),
+            videoDeviceId: nextCamera.deviceId
+        };
+
+        setCurrentCameraIndex(nextIndex);
+
+        if (video) {
+            await refreshLocalMedia(true, audio);
+        }
+    };
+
     const handleEndCall = () => {
         stopTracks(localVideoRef.current?.srcObject);
         sessionStorage.removeItem(storageKey);
@@ -397,6 +450,18 @@ export default function VideoMeetComponent() {
             sendMessage();
         }
     };
+
+    const participantCount = videos.length + 1;
+    const participantsClassName = [
+        styles.conferenceView,
+        participantCount === 1
+            ? styles.conferenceSolo
+            : participantCount === 2
+                ? styles.conferencePair
+                : participantCount <= 4
+                    ? styles.conferenceQuad
+                    : styles.conferenceCrowded
+    ].join(' ');
 
     return (
         <div className={styles.meetVideoContainer}>
@@ -450,7 +515,17 @@ export default function VideoMeetComponent() {
                 <div className={styles.roomPill}>Live meeting</div>
             </div>
 
-            <div className={styles.conferenceView}>
+            <div className={participantsClassName}>
+                <div className={`${styles.conferenceCard} ${styles.localConferenceCard}`}>
+                    <video
+                        ref={localVideoRef}
+                        autoPlay
+                        muted
+                        playsInline
+                    ></video>
+                    <div className={styles.participantLabel}>{username || 'You'} (You)</div>
+                </div>
+
                 {videos.map((remoteVideo) => (
                     <div className={styles.conferenceCard} key={remoteVideo.socketId}>
                         <video
@@ -468,8 +543,6 @@ export default function VideoMeetComponent() {
                 ))}
             </div>
 
-            <video className={styles.meetUserVideo} ref={localVideoRef} autoPlay muted playsInline></video>
-
             <div className={styles.buttonContainers}>
                 <IconButton onClick={handleVideo} className={styles.controlButton}>
                     {video ? <VideocamIcon /> : <VideocamOffIcon />}
@@ -480,6 +553,12 @@ export default function VideoMeetComponent() {
                 <IconButton onClick={handleAudio} className={styles.controlButton}>
                     {audio ? <MicIcon /> : <MicOffIcon />}
                 </IconButton>
+
+                {cameraDevices.length > 1 ? (
+                    <IconButton onClick={handleSwitchCamera} className={styles.controlButton}>
+                        <CameraswitchRoundedIcon />
+                    </IconButton>
+                ) : null}
 
                 {screenAvailable ? (
                     <IconButton onClick={handleScreen} className={styles.controlButton}>

@@ -48,7 +48,6 @@ export default function PreJoinPage() {
     const [pendingPermission, setPendingPermission] = useState(null); // 'mic' | 'camera'
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem('av_theme') !== 'light');
     const [cameraDevices, setCameraDevices] = useState([]);
-    const [microphoneDevices, setMicrophoneDevices] = useState([]);
     const [selectedCameraId, setSelectedCameraId] = useState('');
     const [selectedMicrophoneId, setSelectedMicrophoneId] = useState('');
 
@@ -112,7 +111,6 @@ export default function PreJoinPage() {
         const micId = nextMicrophones[0]?.deviceId || '';
 
         setCameraDevices(nextCameras);
-        setMicrophoneDevices(nextMicrophones);
 
         return { cameras: nextCameras, microphones: nextMicrophones, camId, micId };
     }, []);
