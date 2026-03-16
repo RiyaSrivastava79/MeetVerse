@@ -53,6 +53,7 @@
 
 .headerActions {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
 }
 
@@ -92,6 +93,7 @@
 .meetingLogo {
     width: 140px;
     height: 140px;
+    max-width: 100%;
     object-fit: contain;
     border-radius: 18px;
     border: 1px solid rgba(148, 163, 184, 0.2);
@@ -229,6 +231,10 @@
         align-items: flex-start;
     }
 
+    .headerActions {
+        width: 100%;
+    }
+
     .homeGrid {
         grid-template-columns: 1fr;
     }
@@ -248,5 +254,20 @@
     .inlineActions {
         width: 100%;
         flex-direction: column;
+    }
+
+    .headerButton,
+    .secondaryButton,
+    .joinCodeButton,
+    .joinLinkButton,
+    .ghostButton,
+    .primaryButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .readonlyField input,
+    .fieldGroup input {
+        font-size: 0.95rem;
     }
 }

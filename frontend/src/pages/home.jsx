@@ -104,8 +104,8 @@ function HomeComponent() {
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: 'Apna Video Call Meeting',
-                    text: 'Join my Apna Video Call meeting',
+                    title: 'MeetVerse Meeting',
+                    text: 'Join my MeetVerse meeting',
                     url: joinLink,
                 });
                 setCopyMessage('Meeting link shared.');

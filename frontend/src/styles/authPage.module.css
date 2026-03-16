@@ -204,6 +204,7 @@
 
 .secondaryActions {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 14px;
 }
@@ -311,16 +312,22 @@
 @media (max-width: 900px) {
     .authLayout {
         grid-template-columns: 1fr;
+        min-height: auto;
     }
 
     .heroStats {
         grid-template-columns: 1fr;
+    }
+
+    .authHero h1 {
+        font-size: clamp(1.9rem, 5vw, 2.8rem);
     }
 }
 
 @media (max-width: 640px) {
     .authShell {
         padding: 14px;
+        padding-top: 70px;
     }
 
     .authHero,
@@ -331,5 +338,15 @@
 
     .secondaryActions {
         flex-direction: column;
+    }
+
+    .ghostButton,
+    .linkButton {
+        width: 100%;
+    }
+
+    .authTabs {
+        width: 100%;
+        justify-content: center;
     }
 }

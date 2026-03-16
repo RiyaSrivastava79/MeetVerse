@@ -11,6 +11,10 @@ const apiClients = getServerCandidates().map((baseUrl) => axios.create({
     timeout: 8000
 }));
 
+const nonRetryableStatuses = new Set([
+    400, 401, 403, 404, 409, 422
+]);
+
 const requestWithFallback = async (requestFactory) => {
     let lastError = null;
 
@@ -20,7 +24,11 @@ const requestWithFallback = async (requestFactory) => {
         } catch (error) {
             lastError = error;
 
-            if (error?.response) {
+            const status = error?.response?.status;
+
+            // Validation/auth errors should surface immediately.
+            // Server/transient errors should try the next candidate.
+            if (status && nonRetryableStatuses.has(status)) {
                 throw error;
             }
         }

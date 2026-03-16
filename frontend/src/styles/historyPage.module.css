@@ -180,3 +180,23 @@
     margin-left: auto;
     flex-shrink: 0;
 }
+
+@media (max-width: 720px) {
+    .shell {
+        padding: 20px 14px;
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .card {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .rejoinButton {
+        width: 100%;
+    }
+}

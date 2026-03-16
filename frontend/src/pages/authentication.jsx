@@ -91,7 +91,7 @@ export default function Authentication() {
 
             <div className={styles.authLayout}>
                 <section className={styles.authHero}>
-                    <div className={styles.brandPill}>Apna Video Call</div>
+                    <div className={styles.brandPill}>MeetVerse</div>
                     <h1>{formState === 0 ? 'Sign in and create your own meeting room' : 'Create your account and start hosting meetings'}</h1>
                     <p>
                         Sign up or log in first. Then generate a meeting, share the join link,

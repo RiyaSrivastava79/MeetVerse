@@ -105,6 +105,7 @@
     position: relative;
     flex: 1 1 320px;
     min-height: 220px;
+    min-width: 0;
     border-radius: 26px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -238,6 +239,7 @@
 
 .chattingArea {
     display: flex;
+    align-items: center;
     gap: 8px;
     padding-top: 12px;
     border-top: 1px solid rgba(148, 163, 184, 0.14);
@@ -284,17 +286,40 @@
         gap: 8px;
         padding: 12px 14px;
     }
+
+    .conferenceCard {
+        flex-basis: calc(50% - 9px);
+    }
 }
 
 @media (max-width: 640px) {
+    .topBar {
+        padding: 14px 12px 0;
+    }
+
+    .conferenceView {
+        padding: 14px 12px 136px;
+        gap: 12px;
+    }
+
+    .conferenceCard {
+        flex-basis: 100%;
+        min-height: 190px;
+    }
+
     .meetUserVideo {
-        width: min(160px, 40vw);
+        width: min(150px, 42vw);
+        right: 12px;
+        bottom: 98px;
+        border-radius: 16px;
     }
 
     .buttonContainers {
         width: calc(100% - 24px);
         justify-content: center;
         bottom: 16px;
+        overflow-x: auto;
+        padding-inline: 10px;
     }
 
     .chatRoom {
@@ -305,5 +330,29 @@
         width: auto;
         height: min(72vh, 520px);
         border-radius: 22px;
+    }
+
+    .chattingArea {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chattingArea :global(.MuiButton-root) {
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .roomPill {
+        font-size: 0.82rem;
+        padding: 8px 12px;
+    }
+
+    .meetUserVideo {
+        width: min(132px, 40vw);
+    }
+
+    .buttonContainers svg {
+        font-size: 1.6rem;
     }
 }

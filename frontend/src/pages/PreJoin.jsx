@@ -278,8 +278,8 @@ export default function PreJoinPage() {
                         </h2>
                         <p>
                             {pendingPermission === 'mic'
-                                ? 'Allow Apna Video Call to use your microphone for this meeting.'
-                                : 'Allow Apna Video Call to use your camera for this meeting.'}
+                                ? 'Allow MeetVerse to use your microphone for this meeting.'
+                                : 'Allow MeetVerse to use your camera for this meeting.'}
                         </p>
                         <div className={styles.permissionActions}>
                             <button type='button' className={styles.allowButton} onClick={requestSpecificAccess}>

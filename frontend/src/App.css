@@ -1,6 +1,6 @@
 .landingPageContainer {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   background: url("/public/background.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,9 +36,11 @@
 
 .landingPageContainer nav .navlist {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.6rem;
   cursor: pointer;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .landingThemeToggle {
@@ -75,11 +77,13 @@
   display: flex;
   justify-content: space-between;
   padding-inline: 3rem;
-  height: 80vh;
+  min-height: calc(100vh - 132px);
   align-items: center;
+  gap: 2rem;
 }
 
 .landingMainContainer>div:nth-child(1) {
+  flex: 1;
   font-size: 2.2rem;
 }
 
@@ -106,8 +110,9 @@
 }
 
 .landingMainContainer>div:nth-child(2) img {
-  height: 70vh;
-  width: auto;
+  height: min(70vh, 640px);
+  width: min(100%, 420px);
+  object-fit: contain;
 }
 
 .landingLight {
@@ -194,11 +199,17 @@
   }
 
   .landingMainContainer>div:nth-child(2) img {
-    height: 42vh;
+    height: min(42vh, 340px);
+    width: min(100%, 320px);
   }
 
   .landingPageContainer nav {
     flex-direction: column;
+    gap: 1rem;
+  }
+
+  .landingPageContainer nav .navlist {
+    justify-content: center;
     gap: 1rem;
   }
 
@@ -211,5 +222,39 @@
 
   .rightPanel > img {
     width: min(90vw, 420px);
+  }
+}
+
+@media (max-width: 640px) {
+  .landingPageContainer nav {
+    padding-inline: 0.9rem;
+    padding-block: 1rem;
+  }
+
+  .landingPageContainer nav h2 {
+    font-size: 1.45rem;
+  }
+
+  .landingPageContainer nav .navlist {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .landingMainContainer {
+    min-height: calc(100vh - 120px);
+    padding-inline: 1rem;
+    gap: 1.2rem;
+  }
+
+  .landingMainContainer>div:nth-child(1) {
+    font-size: 1.25rem;
+  }
+
+  .landingMainContainer>div:nth-child(1) div[role='button'] button {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 14px;
   }
 }

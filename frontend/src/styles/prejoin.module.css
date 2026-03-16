@@ -68,6 +68,8 @@
 .topMetaRight {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 12px;
 }
 
@@ -138,6 +140,7 @@
     background: rgba(15, 23, 42, 0.72);
     border: 1px solid rgba(148, 163, 184, 0.18);
     box-shadow: 0 24px 50px rgba(2, 6, 23, 0.32);
+    max-width: min(100%, 320px);
 }
 
 .roomBadge span {
@@ -147,6 +150,10 @@
     text-transform: uppercase;
     letter-spacing: 0.12em;
     margin-bottom: 6px;
+}
+
+.roomBadge p {
+    overflow-wrap: anywhere;
 }
 
 .contentCard {
@@ -385,6 +392,11 @@
         align-items: flex-start;
     }
 
+    .topMetaRight {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
     .inputGrid {
         grid-template-columns: 1fr;
     }
@@ -393,6 +405,7 @@
 @media (max-width: 640px) {
     .preJoinShell {
         padding-inline: 14px;
+        padding-top: 22px;
     }
 
     .contentCard {
@@ -401,7 +414,7 @@
     }
 
     .previewPanel {
-        min-height: 380px;
+        min-height: min(52vh, 340px);
     }
 
     .controlRow {
@@ -415,6 +428,15 @@
 
     .joinButton {
         width: 100%;
+    }
+
+    .brandBlock h1 {
+        font-size: clamp(1.6rem, 8vw, 2.1rem);
+        line-height: 1.15;
+    }
+
+    .brandBlock p {
+        font-size: 0.94rem;
     }
 }
 
